@@ -256,9 +256,9 @@ class SamplerSelector:
         return (sampler_name, sampler_name)
 
 class SchedulerSelector:
-    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'], "STRING")
+    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]'], "STRING")
     RETURN_NAMES = ("scheduler",                                                                                "scheduler_name")
-    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'])", "scheduler name (STRING)")
+    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'], 'LTXV[default]')", "scheduler name (STRING)")
     FUNCTION = "get_names"
 
     CATEGORY = 'ImageSaver/utils'
@@ -268,7 +268,7 @@ class SchedulerSelector:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'], {"tooltip": "scheduler (Comfy's standard + extras)"}),
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]'], {"tooltip": "scheduler (Comfy's standard + extras)"}),
             }
         }
 
@@ -308,7 +308,7 @@ class SchedulerToString:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'], {"tooltip": "scheduler (Comfy's standard + extras)"}),
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]'], {"tooltip": "scheduler (Comfy's standard + extras)"}),
             }
         }
 
