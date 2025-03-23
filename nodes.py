@@ -14,6 +14,9 @@ from .utils import get_sha256
 from .prompt_metadata_extractor import PromptMetadataExtractor
 from nodes import MAX_RESOLUTION
 
+class AnyType(str):
+    def __ne__(self, __value: object) -> bool:
+        return False
 
 def parse_checkpoint_name(ckpt_name):
     return os.path.basename(ckpt_name)
@@ -256,9 +259,9 @@ class SamplerSelector:
         return (sampler_name, sampler_name)
 
 class SchedulerSelector:
-    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]'], "STRING")
-    RETURN_NAMES = ("scheduler",                                                                                "scheduler_name")
-    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]'], 'LTXV[default]')", "scheduler name (STRING)")
+    RETURN_TYPES = (AnyType("*"), "STRING")
+    RETURN_NAMES = ("scheduler", "scheduler_name")
+    OUTPUT_TOOLTIPS = ("scheduler (any type)", "scheduler name (STRING)")
     FUNCTION = "get_names"
 
     CATEGORY = 'ImageSaver/utils'
